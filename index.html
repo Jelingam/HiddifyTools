@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -148,53 +148,16 @@
   </div>
 
   <script>
-    function isBase64(str) {
-      try {
-        return btoa(atob(str)) === str;
-      } catch (err) {
-        return false;
-      }
-    }
-
-    function extractIpFromUrl(url) {
-      const atIndex = url.indexOf('@');
-      const colonIndex = url.indexOf(':', atIndex);
-      if (atIndex !== -1 && colonIndex !== -1) {
-        return url.substring(atIndex + 1, colonIndex);
-      }
-      return null;
-    }
-
     function processConfig() {
-      const input = document.getElementById('configInput').value.trim().split('\n');
+      var inputConfigs = JSON.parse(document.getElementById('configInput').value.trim());
       const resultBox = document.getElementById('resultBox');
-      let extractedIPs = [];
+      let newConfigs = [];
 
-      input.forEach(line => {
-        line = line.trim();
-        
-        if (line.startsWith('vmess://')) {
-          const base64Part = line.slice(8); // Remove 'vmess://'
-          if (isBase64(base64Part)) {
-            const decoded = atob(base64Part);
-            try {
-              const config = JSON.parse(decoded);
-              if (config.add) {
-                extractedIPs.push(config.add);
-              }
-            } catch (e) {
-              console.error('Invalid JSON in decoded config:', decoded);
-            }
-          }
-        } else if (line.startsWith('vless://') || line.startsWith('trojan://')) {
-          const ip = extractIpFromUrl(line);
-          if (ip) {
-            extractedIPs.push(ip);
-          }
-        }
-      });
-
-      resultBox.textContent = extractedIPs.length ? extractedIPs.join('\n') : 'No valid IPs found.';
+      for (var config in inputConfigs.outbounds) {
+        config["detour"] = "socks"
+        newConfigs.push(config)
+      }
+      resultBox.textContent = JSON.stringify(newConfigs)
     }
 
     function copyToClipboard() {
