@@ -149,13 +149,15 @@
 
   <script>
     function processConfig() {
-      var inputConfigs = JSON.parse(document.getElementById('configInput').value.trim());
+      var inputConfigs = JSON.parse(document.getElementById('configInput').value);
       const resultBox = document.getElementById('resultBox');
       let newConfigs = [];
 
-      for (var config in inputConfigs.outbounds) {
+      for (var i in inputConfigs.outbounds) {
+        var config = inputConfigs.outbounds[i]
         config["detour"] = "socks"
         newConfigs.push(config)
+        //console.log(config)
       }
       resultBox.textContent = JSON.stringify(newConfigs)
     }
