@@ -176,7 +176,7 @@
         newConfigs.push(config);
         //console.log(config);
       }
-      const socks = {"type": "socks", "tag": "socks", "server": "127.0.0.1", "server_port": 10808};
+      const socks = {"type": "socks", "tag": "socks", "server": "127.0.0.1", "server_port": portSocks};
       inputConfigs.outbounds.push(socks);
       resultBox.textContent = JSON.stringify(inputConfigs, null, 2);
     }
