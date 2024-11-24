@@ -154,14 +154,14 @@
       let newConfigs = [];
 
       for (var i in inputConfigs.outbounds) {
-        var config = inputConfigs.outbounds[i]
-        config["detour"] = "socks"
-        newConfigs.push(config)
-        //console.log(config)
+        var config = inputConfigs.outbounds[i];
+        config["detour"] = "socks";
+        newConfigs.push(config);
+        //console.log(config);
       }
-      const socks = {"type": "socks", "tag": "socks input", "server": "127.0.0.1", "server_port": 10808}
-      inputConfigs.outbounds.push(socks)
-      resultBox.textContent = JSON.stringify(inputConfigs)
+      const socks = {"type": "socks", "tag": "socks input", "server": "127.0.0.1", "server_port": 10808};
+      inputConfigs.outbounds.push(socks);
+      resultBox.textContent = JSON.stringify(inputConfigs);
     }
 
     function copyToClipboard() {
