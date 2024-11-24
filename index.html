@@ -161,7 +161,7 @@
       }
       const socks = {"type": "socks", "tag": "socks input", "server": "127.0.0.1", "server_port": 10808};
       inputConfigs.outbounds.push(socks);
-      resultBox.textContent = JSON.stringify(inputConfigs);
+      resultBox.textContent = JSON.stringify(inputConfigs, null, 2);
     }
 
     function copyToClipboard() {
