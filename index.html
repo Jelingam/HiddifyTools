@@ -125,6 +125,9 @@
     <div class="input-area">
       <textarea id="configInput" placeholder="Paste json format config from hiddify"></textarea>
     </div>
+    <div class="input-area">
+      <textarea id="socksPort" placeholder="Input first vpn socks port, ex: v2rayng = 10808"></textarea>
+    </div>
     <button onclick="processConfig()">Create Socks Inbound</button>
     <div class="result-area">
       <div class="result-box">
@@ -149,7 +152,8 @@
 
   <script>
     function processConfig() {
-      var inputConfigs = JSON.parse(document.getElementById('configInput').value);
+      var inputConfigs = JSON.parse(document.getElementById('configInput').value.trim());
+      const portSocks = Number(document.getElementById('socksPort').value.trim());
       const resultBox = document.getElementById('resultBox');
       let newConfigs = [];
 
