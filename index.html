@@ -48,17 +48,9 @@
 
     .port-area {
       margin-bottom: 20px;
+      height: 30px;
     }
 
-    socksarea {
-      width: 100%;
-      height: 30px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-family: inherit;
-      resize: none;
-    }
     .result-box {
       position: relative;
     }
@@ -139,7 +131,7 @@
       <textarea id="configInput" placeholder="Paste json format config from hiddify"></textarea>
     </div>
     <div class="port-area">
-      <socksarea id="socksPort" placeholder="Input first vpn socks port, ex: v2rayng = 10808"></socksarea>
+      <textarea id="socksPort" placeholder="Input first vpn socks port, ex: v2rayng = 10808"></textarea>
     </div>
     <button onclick="processConfig()">Create Socks Inbound</button>
     <div class="result-area">
