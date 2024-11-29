@@ -1,1 +1,1 @@
-# hiddifysocks.github.io
+# https://jelingam.github.io/HiddifyTools/
